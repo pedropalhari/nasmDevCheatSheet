@@ -78,6 +78,8 @@ Para acompanhar a variável. Coloca no display do DDD a variável VARIAVEL ou o 
 * `/d` - Mostra o número (ou conjunto de) em decimal.
 * `/s` - Tenta mostrar o Array em formato de String ASCII. 
 
+Opções podem ser concatenadas (ex: `/xd`).
+
 ### Tipos <a name="types" />
 Blocos de:
 * `(char)` - 8 bits.
