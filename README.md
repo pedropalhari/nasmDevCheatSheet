@@ -1,10 +1,17 @@
 # NASM CHEATSHEET
 
 ## Index
-1. [Comandos de compilação/compilação e debug](#comandos)
+* [Comandos de compilação/compilação e debug](#comandos)
+	* [Arquivo ./asm.sh](#aasm)
+	* [Arquivo ./asmd.sh](#aasmd)
+* [Cheatsheet do DDD](#dddcheat)
+	* [break](#break)
+	* [graph display](#graphdisplay)
+	* [Opções](#slashoptions)
+	* [Tipos](#types)
 
 ## Comandos de compilação/compilação e debug <a name="comandos"/>
-### Arquivo ./asm.sh
+### Arquivo ./asm.sh <a name="aasm"/>
 ```
 function compile() {
 	yasm -g dwarf2 -f elf64 $1.asm -l $1.lst && ld -g -o $1 $1.o;
@@ -21,7 +28,7 @@ Como usar:
 
 A saída é um arquivo executável de nome *arquivo*. 
 
-### Arquivo ./asmd.sh
+### Arquivo ./asmd.sh <a name="aasmd"/>
 ```
 function compile() {
 	yasm -g dwarf2 -f elf64 $1.asm -l $1.lst && ld -g -o $1 $1.o;
@@ -39,20 +46,48 @@ Como usar:
 
 A saída é um arquivo executável de nome *arquivo*. Abre automaticamente o debugger DDD.
 
-## Cheatsheet do DDD
- * Para se colocar um break point em uma linha utiliza-se o comando `break` (ex: `break 36`) ou em um label (ex: `break _start`).
- * Para monitorar uma variável é possível mantê-la no graph display com `graph display [/option] [(size)] nome_da_variavel` (ex: `graph display (int) contador` mostra a variável em blocos de 32 bits no display)
-   * As /options possíveis são:
-		* /x - Mostra o número em hexa
-		* /d - Mostra o número em decimal
-	* as (size) possíveis são:
-		* (char) - 8 bits
-		* (short) - 16 bits
-		* (int) - 32 bits
-		* (long) - 64 bits
-		* (float) - 32 bits ponto flutuante
-		* (double) - 64 bits ponto flutuante
- 
-* Para monitorar um array no graph display pode-se usar `graph display [/option] [(size[num_elementos])] nome_do_array` (ex: `graph display /x (char[5]) array_de_bytes`).
+## Cheatsheet do DDD <a name="dddcheat"/>
+### break <a name="break" />
+
+Comando:
+`break LINHA/LABEL`
+
+Exemplo:
+`break 36`
+`break _start`
+
+Descrição:
+Coloca um break na linha de número LINHA ou na linha do label LABEL.
+
+### graph display <a name="graphdisplay" />
+
+Comando:
+ `graph display [/opção]  [(tipo)] VARIAVEL`
+ `graph display [/opção] [(tipo[NUM_ELEMENTOS])] ARRAY`
+
+Exemplo:
+`graph display contador`
+`graph display (long) timestamp`
+`graph display /x (char[5]) array_de_bytes`
+
+Descrição:
+Para acompanhar a variável. Coloca no display do DDD a variável VARIAVEL ou o array ARRAY com o numero de elementos NUM_ELEMENTOS. Veja [opções](#slashoptions) e [tipos](#types).
+
+### Opções <a name="slashoptions" />
+* `/x` - Mostra o número (ou conjunto de) em hexadecimal.
+* `/d` - Mostra o número (ou conjunto de) em decimal.
+* `/s` - Tenta mostrar o Array em formato de String ASCII. 
+
+### Tipos <a name="types" />
+Blocos de:
+* `(char)` - 8 bits.
+* `(short)` - 16 bits.
+* `(int)` - 32 bits.
+* `(long)` - 64 bits.
+* `(float)` - 32 bits ponto flutuante.
+* `(double)` - 64 bits ponto flutuante.
+
+Os tipos aceitam variações de signed/unsigned (ex: `(unsigned char)`).
+
 
 
