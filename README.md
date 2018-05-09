@@ -1,7 +1,9 @@
 # NASM CHEATSHEET
 
-## Comandos de compilação/compilação e debug
+## Index
+1. [Comandos de compilação/compilação e debug](#comandos)
 
+## Comandos de compilação/compilação e debug <a name="comandos"/>
 ### Arquivo ./asm.sh
 ```
 function compile() {
