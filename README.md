@@ -20,10 +20,10 @@ compile $1
 exit
 ```
 
-Descrição:
+Descrição:  
 Comando que compila o arquivo .asm em um arquivo executável x64.
 
-Como usar:
+Como usar:  
 `$ ./asm.sh arquivo.asm`
 
 A saída é um arquivo executável de nome *arquivo*. 
@@ -38,10 +38,10 @@ compile $1
 exit
 ```
 
-Descrição:
+Descrição:  
 Comando que compila o arquivo .asm em um arquivo executável x64.
 
-Como usar:
+Como usar:  
 `$ ./asmd.sh arquivo.asm`
 
 A saída é um arquivo executável de nome *arquivo*. Abre automaticamente o debugger DDD.
@@ -49,28 +49,28 @@ A saída é um arquivo executável de nome *arquivo*. Abre automaticamente o deb
 ## Cheatsheet do DDD <a name="dddcheat"/>
 ### break <a name="break" />
 
-Comando:
+Comando:  
 `break LINHA/LABEL`
 
-Exemplo:
+Exemplo:  
 `break 36`
 `break _start`
 
-Descrição:
+Descrição:  
 Coloca um break na linha de número LINHA ou na linha do label LABEL.
 
 ### graph display <a name="graphdisplay" />
 
-Comando:
- `graph display [/opção]  [(tipo)] VARIAVEL`
- `graph display [/opção] [(tipo[NUM_ELEMENTOS])] ARRAY`
+Comando:  
+ `graph display [/opção]  [(tipo)] VARIAVEL`  
+ `graph display [/opção] [(tipo[NUM_ELEMENTOS])] ARRAY`  
 
-Exemplo:
-`graph display contador`
-`graph display (long) timestamp`
-`graph display /x (char[5]) array_de_bytes`
+Exemplo:  
+`graph display contador`  
+`graph display (long) timestamp`  
+`graph display /x (char[5]) array_de_bytes`  
 
-Descrição:
+Descrição:  
 Para acompanhar a variável. Coloca no display do DDD a variável VARIAVEL ou o array ARRAY com o numero de elementos NUM_ELEMENTOS. Veja [opções](#slashoptions) e [tipos](#types).
 
 ### Opções <a name="slashoptions" />
